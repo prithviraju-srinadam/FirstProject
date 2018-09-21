@@ -1,0 +1,103 @@
+swagger: '2.0'
+info:
+  version: ''
+  title: Freelancer
+  description: ''
+basePath: /Test
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/freelancers/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-freelancer
+      summary: Get Freelancer
+      tags:
+        - Freelancers
+      parameters:
+        - name: ''
+          in: query
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            properties:
+              Name:
+                type: string
+              Age:
+                type: string
+              PayRate:
+                type: string
+    put:
+      operationId: PUT-freelancer
+      summary: Update Freelancer
+      tags:
+        - Freelancers
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/freelancer-input'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/freelancer-input'
+  /freelancers:
+    get:
+      operationId: LIST-freelancers
+      summary: List Freelancers
+      tags:
+        - Freelancers
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/freelancer-input'
+    post:
+      operationId: POST-freelancer
+      summary: Create Freelancer
+      tags:
+        - Freelancers
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/freelancer-input'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/freelancer-input'
+definitions:
+  freelancer-input:
+    title: Freelancer Input
+    type: object
+    properties:
+      Name:
+        type: string
+      FreeLancerID:
+        type: string
+      Age:
+        type: integer
+      PayRate:
+        type: number
+      Assigned:
+        type: boolean

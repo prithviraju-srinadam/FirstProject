@@ -1,0 +1,93 @@
+swagger: '2.0'
+info:
+  version: ''
+  title: Projects
+  description: ''
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /Projects:
+    get:
+      operationId: GET_Projects
+      responses:
+        default:
+          description: ''
+          schema: {}
+  '/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-project
+      summary: Get Project
+      tags:
+        - Projects
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/project-input'
+    put:
+      operationId: PUT-project
+      summary: Update Project
+      tags:
+        - Projects
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/project-input'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/project-input'
+    delete:
+      operationId: DELETE-project
+      summary: Delete Project
+      tags:
+        - Projects
+      responses:
+        '204':
+          description: ''
+  /:
+    get:
+      operationId: LIST-projects
+      summary: List Projects
+      tags:
+        - Projects
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/project-input'
+    post:
+      operationId: POST-project
+      summary: Create Project
+      tags:
+        - Projects
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/project-input'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/project-input'
+definitions:
+  project-input:
+    title: Project Input
+    type: object
+    properties:
+      ProjectId:
+        type: string
+      ProjectNanme:
+        type: string

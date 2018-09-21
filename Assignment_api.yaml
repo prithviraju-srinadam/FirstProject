@@ -1,0 +1,101 @@
+swagger: '2.0'
+info:
+  version: ''
+  title: Assignment
+  description: ''
+basePath: /assignment/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/assignments/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: GET-assignment
+      summary: Get Assignment
+      tags:
+        - Assignments
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/assignment-input'
+    put:
+      operationId: PUT-assignment
+      summary: Update Assignment
+      tags:
+        - Assignments
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/assignment-input'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/assignment-input'
+    delete:
+      operationId: DELETE-assignment
+      summary: Delete Assignment
+      tags:
+        - Assignments
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              '':
+                type: string
+      responses:
+        '204':
+          description: ''
+  /assignments:
+    get:
+      operationId: LIST-assignments
+      summary: List Assignments
+      tags:
+        - Assignments
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/assignment-input'
+    post:
+      operationId: POST-assignment
+      summary: Create Assignment
+      tags:
+        - Assignments
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/assignment-input'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/assignment-input'
+definitions:
+  assignment-input:
+    title: Assignment Input
+    type: object
+    properties:
+      ID:
+        type: string
+      ProjectId:
+        type: string
+      FreelancerId:
+        type: string
+      StartDate:
+        type: string
+      EndDate:
+        type: string
